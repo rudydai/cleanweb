@@ -19,10 +19,10 @@ def parse_input(filein, fileout):
             start = str(startime)+":00"
             end = str((startime+1)%24)+":00"
             measure = float(meas)
-            entry = {"time": epochtime, "date":date, "start":start, "end":end, "value": measure}
+            entry = {"time": epochtime, "date":date, "start":start, "end":end, "kWh": measure, "type":"Electric_usage"}
             measurements.append(entry)
             startime += 1
-    writeout.write(json.dumps({"readings": measurements, "type": "Electricity", "units": "kWh"}, sort_keys=True, indent=4, separators=(",", ": ")))
+    writeout.write(json.dumps({"readings": measurements}, sort_keys=True, indent=4, separators=(",", ": ")))
 
 if __name__ == "__main__":
     if len(sys.argv) != 3:
