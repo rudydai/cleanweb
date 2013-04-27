@@ -16,8 +16,12 @@ def process():
     if request.method == 'POST':
         file = request.files['file']
         if file and allowed_file(file.filename):
-            print type(file.read())
-            return render_template("graph.html")
+            try:
+                data = csv_read(file.read())
+                print unicode(data)
+                return render_template("graph.html", data=unicode(data))
+            except:
+                return "Invalid PGE GreenButton file"
     return render_template("index.html")
 
 if __name__ == "__main__":

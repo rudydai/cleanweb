@@ -41,7 +41,8 @@ var margin = {top: 20, right: 20, bottom: 30, left: 50},
     width = 960 - margin.left - margin.right,
     height = 500 - margin.top - margin.bottom;
 
-var parseDate = d3.time.format("%Y%m%d").parse;
+var all_data = {{ data | safe}};
+var data = all_data.readings;
 
 var x = d3.time.scale()
     .range([0, width]);
@@ -59,13 +60,13 @@ var yAxis = d3.svg.axis()
 
 var line = d3.svg.area()
     .interpolate("basis")
-    .x(function(d) { return x(d.date); })
-    .y(function(d) { return y(d["New York"]); });
+    .x(function(d) { return x(d.time); })
+    .y(function(d) { return y(d["house"]); });
 
 var area = d3.svg.area()
     .interpolate("basis")
-    .x(function(d) { return x(d.date); })
-    .y1(function(d) { return y(d["New York"]); });
+    .x(function(d) { return x(d.time); })
+    .y1(function(d) { return y(d["house"]); });
 
 var svg = d3.select("body").append("svg")
     .attr("width", width + margin.left + margin.right)
@@ -73,18 +74,25 @@ var svg = d3.select("body").append("svg")
   .append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-d3.tsv("static/data.tsv", function(error, data) {
-  data.forEach(function(d) {
+  for ( var i = 0; i < data.length; i++){
+    data[i].time = new Date(data[i]["time"]*1000);
+    data[i]["house"] = +data[i]["kWh"];
+    data[i]["baseline"] = 0;
+    console.log(data[i]);
+  }
+/*  data.forEach(function(d) {
     d.date = parseDate(d.date);
-    d["New York"]= +d["New York"];
-    d["San Francisco"] = +d["San Francisco"];
-  });
+    //d["New York"]= +d["New York"];
+    d["house"]= +d["New York"];
+    d["baseline"] = +d["San Francisco"];
+  });*/
 
-  x.domain(d3.extent(data, function(d) { return d.date; }));
+  console.log(data);
+  x.domain(d3.extent(data, function(d) { return d.time; }));
 
   y.domain([
-    d3.min(data, function(d) { return Math.min(d["New York"], d["San Francisco"]); }),
-    d3.max(data, function(d) { return Math.max(d["New York"], d["San Francisco"]); })
+    d3.min(data, function(d) { return Math.min(d["house"], d["baseline"]); }),
+    d3.max(data, function(d) { return Math.max(d["house"], d["baseline"]); })
   ]);
 
   svg.datum(data);
@@ -102,7 +110,7 @@ d3.tsv("static/data.tsv", function(error, data) {
   svg.append("path")
       .attr("class", "area above")
       .attr("clip-path", "url(#clip-above)")
-      .attr("d", area.y0(function(d) { return y(d["San Francisco"]); }));
+      .attr("d", area.y0(function(d) { return y(d["baseline"]); }));
 
   svg.append("path")
       .attr("class", "area below")
@@ -127,6 +135,5 @@ d3.tsv("static/data.tsv", function(error, data) {
       .attr("dy", ".71em")
       .style("text-anchor", "end")
       .text("Energy Usage kWh");
-});
 
 </script></script></script></body></style>>
