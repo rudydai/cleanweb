@@ -2,6 +2,7 @@ import datetime
 import calendar
 import csv
 import sys
+import json
 
 csv_file = "sample.csv"
 data = {}
@@ -33,4 +34,4 @@ for row in cr:
 
         data["readings"].append(reading_dict)
 
-print(data)
+print(json.dumps(data))
