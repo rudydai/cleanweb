@@ -6,31 +6,33 @@ csv_file = "sample.csv"
 data = {}
 data["readings"] = []
 
-cr = csv.reader(open(csv_file,"rb"))
 
-for row in cr:
+def csv_read(csv_file):
+    cr = csv.reader(open(csv_file,"rb"))
+    for row in cr:
 
-    if row and row[0].lower() in ["name", "address", "account number"]:
-        data[row[0].lower()] = row[1]
-        continue
-    
-    if row and row[0].lower() == "type":
-        continue
-
-    if len(row) > 5:
-        reading_dict = {}
-        reading_dict["date"] = row[1]
-        reading_dict["start"] = row[2]
-        reading_dict["end"] = row[3]
-        reading_dict["kWh"] = float(row[4])
-        reading_dict["type"] = row[0]
+        if row and row[0].lower() in ["name", "address", "account number"]:
+            data[row[0].lower()] = row[1]
+            continue
         
-        month, day, year = row[1].split("/")
-        hour, minute = row[2].split(":")
+        if row and row[0].lower() == "type":
+            continue
 
-        reading_dict["time"] = int(datetime.datetime(int(year), int(month), int(day), int(hour), int(minute)).strftime('%s'))
+        if len(row) > 5:
+            reading_dict = {}
+            reading_dict["date"] = row[1]
+            reading_dict["start"] = row[2]
+            reading_dict["end"] = row[3]
+            reading_dict["kWh"] = float(row[4])
+            reading_dict["type"] = row[0]
+            
+            month, day, year = row[1].split("/")
+            hour, minute = row[2].split(":")
 
-        data["readings"].append(reading_dict)
+            reading_dict["time"] = int(datetime.datetime(int(year), int(month), int(day), int(hour), int(minute)).strftime('%s'))
 
-json_data = json.dumps(data)
-print(json_data)
+            data["readings"].append(reading_dict)
+
+    return json.dumps(data)
+
+print(csv_read(csv_file))
