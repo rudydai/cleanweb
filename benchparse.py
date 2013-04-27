@@ -17,9 +17,9 @@ def parse_input(filein, fileout):
         for meas in entries:
             epochtime = int(time.mktime(time.strptime(date+" "+str(startime)+":00", "%m/%d/%Y %H:%M")))
             start = str(startime)+":00"
-            end = str((startime+1)%24)+":00"
+            end = str(startime)+":59"
             measure = float(meas)
-            entry = {"time": epochtime, "date":date, "start":start, "end":end, "kWh": measure, "type":"Electric_usage"}
+            entry = {"time": epochtime, "date":date, "start":start, "end":end, "kWh": measure, "type":"Electric Usage"}
             measurements.append(entry)
             startime += 1
     writeout.write(json.dumps({"readings": measurements}, sort_keys=True, indent=4, separators=(",", ": ")))
