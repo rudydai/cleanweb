@@ -5,7 +5,7 @@ import sys
 def parse_input(filein, fileout):
     readin = open(filein, 'r')
     writeout = open(fileout, 'w')
-    measurements = []
+    measurements = {} 
     for line in readin:
         startime = 0
         entries = line.split(',')
@@ -13,14 +13,14 @@ def parse_input(filein, fileout):
             print "incorrectly formatted input: "+line
             break
         date = entries[1].strip()
+        date = date[:6]
         entries = entries[2:]
         for meas in entries:
-            epochtime = int(time.mktime(time.strptime(date+" "+str(startime)+":00", "%m/%d/%Y %H:%M")))
             start = str(startime)+":00"
             end = str(startime)+":59"
             measure = float(meas)
-            entry = {"time": epochtime, "date":date, "start":start, "end":end, "kWh": measure, "type":"Electric Usage"}
-            measurements.append(entry)
+            key = date+start
+            measurements[key] = measure
             startime += 1
     writeout.write(json.dumps({"readings": measurements}))
 
