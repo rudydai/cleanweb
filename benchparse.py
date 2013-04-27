@@ -22,7 +22,7 @@ def parse_input(filein, fileout):
             entry = {"time": epochtime, "date":date, "start":start, "end":end, "kWh": measure, "type":"Electric Usage"}
             measurements.append(entry)
             startime += 1
-    writeout.write(json.dumps({"readings": measurements}, sort_keys=True, indent=4, separators=(",", ": ")))
+    writeout.write(json.dumps({"readings": measurements}))
 
 if __name__ == "__main__":
     if len(sys.argv) != 3:
