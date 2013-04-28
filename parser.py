@@ -57,5 +57,5 @@ def csv_read(csv_file):
     data["worst_hour"] = hours.index(max(hours))
     data["avg_weekday_energy"] = float(weekday_energy)/weekday_count
     data["avg_weekend_energy"] = float(weekend_energy)/weekend_count
-
+    
     return json.dumps(data)
