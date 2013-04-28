@@ -20,4 +20,3 @@ tips = ["When buying new appliances, be sure to purchase energy-efficient ENERGY
 def main():
     return random.choice(tips)
 
-main()

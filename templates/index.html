@@ -3,14 +3,27 @@
   <meta http-equiv="content-type" content="text/html; charset=utf-8">
 
   <title>Green Button Data Visualization</title>
+  <link rel="stylesheet" href="static/css/normalize.css" />
+  <link rel="stylesheet" href="static/css/foundation.css" />
+  <script src="js/vendor/custom.modernizr.js"></script></script>
+  <style>
+  html,body{
+    background-color: #27ae60;
+  }
+  h1{
+    color:#fff;
+  }
+  </style>
   
 </head>
 <body>
-  <h1 id="heading">Upload your Green butotn data</h1>
+  <div class="row">
+  <h1 id="heading">Upload your GreenButton Data</h1>
   <form action ="" method="post" enctype="multipart/form-data">
     <p>
       <input type="file" name="file">
-      <input type="submit" name="upload" value="Upload">
+      <input class="button large" type="submit" name="upload" value="Upload">
     </p>
   </form>
+  </div>
 </body>

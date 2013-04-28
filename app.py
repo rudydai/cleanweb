@@ -1,6 +1,7 @@
 from flask import Flask, request, render_template
 
 from parser import csv_read
+from tips import main as tipper
 import os
 app = Flask(__name__)
 
@@ -19,7 +20,7 @@ def process():
             try:
                 data = csv_read(file.read())
                 print unicode(data)
-                return render_template("graph.html", data=unicode(data))
+                return render_template("graph.html", data=unicode(data), tip=tipper())
             except:
                 return "Invalid PGE GreenButton file"
     return render_template("index.html")
