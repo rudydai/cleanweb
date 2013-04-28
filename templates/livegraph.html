@@ -3,7 +3,7 @@
   <meta http-equiv="refresh" content="30">
   <meta http-equiv="content-type" content="text/html; charset=utf-8">
 
-  <title>Summary of your energy usage</title>
+  <title>Raven HAN Energy Usage</title>
   <link rel="stylesheet" href="static/css/normalize.css" />
   <link rel="stylesheet" href="static/css/foundation.css" />
    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
@@ -29,11 +29,11 @@ body {
 }
 
 .area.above {
-  fill: #2ecc71;
+  fill: #e67e22;
 }
 
 .area.below {
-  fill: #c0392b; 
+  fill: #e67e22; 
 }
 
 .line {
@@ -42,8 +42,8 @@ body {
 }
 
 #bar{
-  background-color: #2ecc71;
-  border-bottom: 4px solid #27ae60;
+  background-color: #3498db;
+  border-bottom: 4px solid #2980b9;
   width: 100%;
   padding-top:20px;
 }
@@ -53,7 +53,7 @@ h1{
 }
 
 text{
-  font-size: 8px;
+  font-size: 12px;
 }
 .circle {
   border-radius: 20px;
@@ -110,17 +110,16 @@ td #fix {
 
 <div id="bar">
 <div class="row">
-<h1>Your GreenButton Energy Summary</h1>
+<h1>Raven HAN Energy Summary</h1>
 </div>
 </div>
-<div class="row">
 <div id="targ">
 <script>
 var base = realbase.readings;
 
-var margin = {top: 20, right: 10, bottom: 30, left: 25},
-    width = 600 - margin.left - margin.right,
-    height = 300 - margin.top - margin.bottom;
+var margin = {top: 20, right: 10, bottom: 30, left: 60},
+    width = 1200 - margin.left - margin.right,
+    height = 500 - margin.top - margin.bottom;
 
 var all_data = {{ data | safe }};
 
@@ -160,9 +159,8 @@ var svg = d3.select("#targ").append("svg")
   var tmpName = "";
   for ( var i = 0; i < data.length; i++){
     data[i].time = new Date(data[i]["time"]*1000);
-    data[i]["house"] = +data[i]["kWh"];
-    tmpName = data[i].date.substring(0,data[i].date.length-4)+data[i].start;
-    data[i]["baseline"] = +base[tmpName] || 0;
+    data[i]["baseline"] = +data[i]["kWh"];
+    data[i]["house"] = 0;
   }
 /*  data.forEach(function(d) {
     d.date = parseDate(d.date);
@@ -220,34 +218,5 @@ var svg = d3.select("#targ").append("svg")
       .style("text-anchor", "end")
       .text("Energy Usage kWh");
 
-</script>
-</div>
-<div class="row">
-  <table style="margin-left:20px;border:none;">
-    <tr><td><span class="circle red"></span><span id="fix"> = Over the California average</span></td><td><span class="circle green"></span></span><span id="fix"> = Under the California average</span></td></tr>
-  </table>
-</div>
-<div class="row">
-<div class="large-12 columns">
-  <div class="large-6 columns">
-  <div class="panel">
-   <h4>Average weekday usage:</h4>
-   <div class="reading">
-   <span id="wday">0.23</span>kWh
-   </div>
-  </div>
-  </div>
-  <div class="large-6 columns">
-  <div class="panel">
-   <h4>Average weekend usage:</h4>
-   <div class="reading">
-   <span id="wend">0.23</span>kWh
-  </div>
-  </div>
-</div>
-<p id="tip">Tip: {{ tip }}</p>
-</div>
-</div>
-<script type="text/javascript" charset="utf-8">
 </script>
 </body>
