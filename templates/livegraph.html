@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<head>
+  <meta http-equiv="refresh" content="30">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  <title>Summary of your energy usage</title>
+  <link rel="stylesheet" href="static/css/normalize.css" />
+  <link rel="stylesheet" href="static/css/foundation.css" />
+   <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+  <script src="static/js/vendor/custom.modernizr.js"></script></script>
+
+  
+<meta charset="utf-8">
+<style>
+
+body {
+  font: 10px sans-serif;
+}
+
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+.x.axis path {
+  display: none;
+}
+
+.area.above {
+  fill: #2ecc71;
+}
+
+.area.below {
+  fill: #c0392b; 
+}
+
+.line {
+  stroke: #000;
+  stroke-width: 1.0px;
+}
+
+#bar{
+  background-color: #2ecc71;
+  border-bottom: 4px solid #27ae60;
+  width: 100%;
+  padding-top:20px;
+}
+
+h1{
+  color: #fff;
+}
+
+text{
+  font-size: 8px;
+}
+.circle {
+  border-radius: 20px;
+  width:10px;
+  height: 10px;
+  display:inline-block;
+}
+.red{
+  background-color: #c0392b;
+}
+
+.green{
+  background-color: #2ecc71;
+}
+td #fix {
+  font-size: 15px;
+  display:inline;
+} 
+
+.panel{
+  background-color: #3498db;
+  border-color: #2980b9;
+  border-top:4px solid #2980b9;
+  border-bottom:none;
+  border-left:none;
+  border-right:none;
+}
+.panel h4{
+  color: #fff;
+}
+
+#wday, #wend{
+  font-size:56px;
+  color: #ecf0f1; 
+}
+.reading{
+  font-size: 32px;
+  color: #2980b9;
+}
+#tip{
+  color: #bdc3c7;
+  font: 15pt Times;
+  font-style: italic;
+  margin-top:30px;
+  margin-left:10px;
+}
+
+
+</style>
+</head>
+<body>
+<script src="static/bench.js" type="text/javascript" charset="utf-8"></script>
+<script src="http://d3js.org/d3.v3.min.js"></script>
+
+<div id="bar">
+<div class="row">
+<h1>Your GreenButton Energy Summary</h1>
+</div>
+</div>
+<div class="row">
+<div id="targ">
+<script>
+var base = realbase.readings;
+
+var margin = {top: 20, right: 10, bottom: 30, left: 25},
+    width = 600 - margin.left - margin.right,
+    height = 300 - margin.top - margin.bottom;
+
+var all_data = {{ data | safe }};
+
+var data = all_data.readings;
+
+
+var x = d3.time.scale()
+    .range([0, width]);
+
+var y = d3.scale.linear()
+    .range([height, 0]);
+
+var xAxis = d3.svg.axis()
+    .scale(x)
+    .orient("bottom");
+
+var yAxis = d3.svg.axis()
+    .scale(y)
+    .orient("left");
+
+var line = d3.svg.area()
+    .interpolate("basis")
+    .x(function(d) { return x(d.time); })
+    .y(function(d) { return y(d["house"]); });
+
+var area = d3.svg.area()
+    .interpolate("basis")
+    .x(function(d) { return x(d.time); })
+    .y1(function(d) { return y(d["house"]); });
+
+var svg = d3.select("#targ").append("svg")
+    .attr("width", width + margin.left + margin.right)
+    .attr("height", height + margin.top + margin.bottom)
+  .append("g")
+    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+  var tmpName = "";
+  for ( var i = 0; i < data.length; i++){
+    data[i].time = new Date(data[i]["time"]*1000);
+    data[i]["house"] = +data[i]["kWh"];
+    tmpName = data[i].date.substring(0,data[i].date.length-4)+data[i].start;
+    data[i]["baseline"] = +base[tmpName] || 0;
+  }
+/*  data.forEach(function(d) {
+    d.date = parseDate(d.date);
+    //d["New York"]= +d["New York"];
+    d["house"]= +d["New York"];
+    d["baseline"] = +d["San Francisco"];
+  });*/
+
+  x.domain(d3.extent(data, function(d) { return d.time; }));
+
+  y.domain([
+    d3.min(data, function(d) { return Math.min(d["house"], d["baseline"]); }),
+    d3.max(data, function(d) { return Math.max(d["house"], d["baseline"]); })
+  ]);
+
+  svg.datum(data);
+
+  svg.append("clipPath")
+      .attr("id", "clip-below")
+    .append("path")
+      .attr("d", area.y0(height));
+
+  svg.append("clipPath")
+      .attr("id", "clip-above")
+      .attr("class", "blah")
+    .append("path")
+      .attr("d", area.y0(0));
+
+  svg.append("path")
+      .attr("class", "area above")
+      .attr("clip-path", "url(#clip-above)")
+      .attr("d", area.y0(function(d) { return y(d["baseline"]); }));
+
+  svg.append("path")
+      .attr("class", "area below")
+      .attr("clip-path", "url(#clip-below)")
+      .attr("d", area);
+
+  svg.append("path")
+      .attr("class", "line")
+      .attr("d", line);
+
+  svg.append("g")
+      .attr("class", "x axis")
+      .attr("transform", "translate(0," + height + ")")
+      .call(xAxis);
+
+  svg.append("g")
+      .attr("class", "y axis")
+      .call(yAxis)
+    .append("text")
+      .attr("transform", "rotate(-90)")
+      .attr("y", 6)
+      .attr("dy", ".71em")
+      .style("text-anchor", "end")
+      .text("Energy Usage kWh");
+
+</script>
+</div>
+<div class="row">
+  <table style="margin-left:20px;border:none;">
+    <tr><td><span class="circle red"></span><span id="fix"> = Over the California average</span></td><td><span class="circle green"></span></span><span id="fix"> = Under the California average</span></td></tr>
+  </table>
+</div>
+<div class="row">
+<div class="large-12 columns">
+  <div class="large-6 columns">
+  <div class="panel">
+   <h4>Average weekday usage:</h4>
+   <div class="reading">
+   <span id="wday">0.23</span>kWh
+   </div>
+  </div>
+  </div>
+  <div class="large-6 columns">
+  <div class="panel">
+   <h4>Average weekend usage:</h4>
+   <div class="reading">
+   <span id="wend">0.23</span>kWh
+  </div>
+  </div>
+</div>
+<p id="tip">Tip: {{ tip }}</p>
+</div>
+</div>
+<script type="text/javascript" charset="utf-8">
+$("#wday").text(all_data.avg_weekday_energy.toFixed(2));
+$("#wend").text(all_data.avg_weekend_energy.toFixed(2));
+</script>
+</body>

@@ -13,6 +13,6 @@ def process():
         if BUFF_SIZE > 25:
             buff.pop(0)
     data = {"readings":list(buff)}
-    return render_template("graph.html", data=unicode(data))
+    return render_template("livegraph.html", data=unicode(data))
     
 

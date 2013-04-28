@@ -1,0 +1,165 @@
+<CurrentSummationDelivered>
+  <DeviceMacId>0x00158d00001ab099</DeviceMacId>
+  <MeterMacId>0xffffffffffffffff</MeterMacId>
+  <TimeStamp>0xffffffff</TimeStamp>
+  <SummationDelivered>0x0000000000072571</SummationDelivered>
+  <SummationReceived>0x0000000000000000</SummationReceived>
+  <Multiplier>0x00000001</Multiplier>
+  <Divisor>0x000003e8</Divisor>
+  <DigitsRight>0x01</DigitsRight>
+  <DigitsLeft>0x00</DigitsLeft>
+  <SuppressLeadingZero>Y</SuppressLeadingZero>
+</CurrentSummationDelivered>
+<TimeCluster>
+  <DeviceMacId>0x00158d00001ab099</DeviceMacId>
+  <MeterMacId>0xffffffffffffffff</MeterMacId>
+  <UTCTime>0x15cddcb4</UTCTime>
+  <LocalTime>0x00000000</LocalTime>
+</TimeCluster>
+<MessageCluster>
+  <DeviceMacId>0x00158d00001ab099</DeviceMacId>
+  <MeterMacId>0xffffffffffffffff</MeterMacId>
+  <TimeStamp>0xffffffff</TimeStamp>
+  <Id>0x0000beef</Id>
+  <Text>Your bill for $355.85 is past due. Please pay to avoid being disconnected.</Text>
+  <ConfirmationRequired>Y</ConfirmationRequired>
+  <Confirmed>N</Confirmed>
+  <Queue>Active</Queue>
+</MessageCluster>
+<PriceCluster>
+  <DeviceMacId>0x00158d00001ab099</DeviceMacId>
+  <MeterMacId>0xffffffffffffffff</MeterMacId>
+  <TimeStamp>0xffffffff</TimeStamp>
+  <Price>0x00000064</Price>
+  <Currency>0x0840</Currency>
+  <TrailingDigits>0x03</TrailingDigits>
+  <Tier>0x01</Tier>
+  <RateLabel>Demo Rate #1</RateLabel>
+</PriceCluster>
+<InstantaneousDemand>
+  <DeviceMacId>0x00158d00001ab099</DeviceMacId>
+  <MeterMacId>0xffffffffffffffff</MeterMacId>
+  <TimeStamp>0xffffffff</TimeStamp>
+  <Demand>0xffffff38</Demand>
+  <Multiplier>0x00000001</Multiplier>
+  <Divisor>0x000003e8</Divisor>
+  <DigitsRight>0x01</DigitsRight>
+  <DigitsLeft>0x00</DigitsLeft>
+  <SuppressLeadingZero>Y</SuppressLeadingZero>
+</InstantaneousDemand>
+<CurrentSummationDelivered>
+  <DeviceMacId>0x00158d00001ab099</DeviceMacId>
+  <MeterMacId>0xffffffffffffffff</MeterMacId>
+  <TimeStamp>0xffffffff</TimeStamp>
+  <SummationDelivered>0x0000000000072574</SummationDelivered>
+  <SummationReceived>0x0000000000000000</SummationReceived>
+  <Multiplier>0x00000001</Multiplier>
+  <Divisor>0x000003e8</Divisor>
+  <DigitsRight>0x01</DigitsRight>
+  <DigitsLeft>0x00</DigitsLeft>
+  <SuppressLeadingZero>Y</SuppressLeadingZero>
+</CurrentSummationDelivered>
+<TimeCluster>
+  <DeviceMacId>0x00158d00001ab099</DeviceMacId>
+  <MeterMacId>0xffffffffffffffff</MeterMacId>
+  <UTCTime>0x15cddce1</UTCTime>
+  <LocalTime>0x00000000</LocalTime>
+</TimeCluster>
+<MessageCluster>
+  <DeviceMacId>0x00158d00001ab099</DeviceMacId>
+  <MeterMacId>0xffffffffffffffff</MeterMacId>
+  <TimeStamp>0xffffffff</TimeStamp>
+  <Id>0x0000beef</Id>
+  <Text>Your bill for $355.85 is past due. Please pay to avoid being disconnected.</Text>
+  <ConfirmationRequired>Y</ConfirmationRequired>
+  <Confirmed>N</Confirmed>
+  <Queue>Active</Queue>
+</MessageCluster>
+<PriceCluster>
+  <DeviceMacId>0x00158d00001ab099</DeviceMacId>
+  <MeterMacId>0xffffffffffffffff</MeterMacId>
+  <TimeStamp>0xffffffff</TimeStamp>
+  <Price>0x00000064</Price>
+  <Currency>0x0840</Currency>
+  <TrailingDigits>0x03</TrailingDigits>
+  <Tier>0x01</Tier>
+  <RateLabel>Demo Rate #1</RateLabel>
+</PriceCluster>
+<InstantaneousDemand>
+  <DeviceMacId>0x00158d00001ab099</DeviceMacId>
+  <MeterMacId>0xffffffffffffffff</MeterMacId>
+  <TimeStamp>0xffffffff</TimeStamp>
+  <Demand>0xfffffb50</Demand>
+  <Multiplier>0x00000001</Multiplier>
+  <Divisor>0x000003e8</Divisor>
+  <DigitsRight>0x01</DigitsRight>
+  <DigitsLeft>0x00</DigitsLeft>
+  <SuppressLeadingZero>Y</SuppressLeadingZero>
+</InstantaneousDemand>
+<CurrentSummationDelivered>
+  <DeviceMacId>0x00158d00001ab099</DeviceMacId>
+  <MeterMacId>0xffffffffffffffff</MeterMacId>
+  <TimeStamp>0xffffffff</TimeStamp>
+  <SummationDelivered>0x0000000000072574</SummationDelivered>
+  <SummationReceived>0x000000000000000a</SummationReceived>
+  <Multiplier>0x00000001</Multiplier>
+  <Divisor>0x000003e8</Divisor>
+  <DigitsRight>0x01</DigitsRight>
+  <DigitsLeft>0x00</DigitsLeft>
+  <SuppressLeadingZero>Y</SuppressLeadingZero>
+</CurrentSummationDelivered>
+<TimeCluster>
+  <DeviceMacId>0x00158d00001ab099</DeviceMacId>
+  <MeterMacId>0xffffffffffffffff</MeterMacId>
+  <UTCTime>0x15cddd0e</UTCTime>
+  <LocalTime>0x00000000</LocalTime>
+</TimeCluster>
+<MessageCluster>
+  <DeviceMacId>0x00158d00001ab099</DeviceMacId>
+  <MeterMacId>0xffffffffffffffff</MeterMacId>
+  <TimeStamp>0xffffffff</TimeStamp>
+  <Id>0x0000beef</Id>
+  <Text>Your bill for $355.85 is past due. Please pay to avoid being disconnected.</Text>
+  <ConfirmationRequired>Y</ConfirmationRequired>
+  <Confirmed>N</Confirmed>
+  <Queue>Active</Queue>
+</MessageCluster>
+<PriceCluster>
+  <DeviceMacId>0x00158d00001ab099</DeviceMacId>
+  <MeterMacId>0xffffffffffffffff</MeterMacId>
+  <TimeStamp>0xffffffff</TimeStamp>
+  <Price>0x00000064</Price>
+  <Currency>0x0840</Currency>
+  <TrailingDigits>0x03</TrailingDigits>
+  <Tier>0x01</Tier>
+  <RateLabel>Demo Rate #1</RateLabel>
+</PriceCluster>
+<InstantaneousDemand>
+  <DeviceMacId>0x00158d00001ab099</DeviceMacId>
+  <MeterMacId>0xffffffffffffffff</MeterMacId>
+  <TimeStamp>0xffffffff</TimeStamp>
+  <Demand>0xfffff768</Demand>
+  <Multiplier>0x00000001</Multiplier>
+  <Divisor>0x000003e8</Divisor>
+  <DigitsRight>0x01</DigitsRight>
+  <DigitsLeft>0x00</DigitsLeft>
+  <SuppressLeadingZero>Y</SuppressLeadingZero>
+</InstantaneousDemand>
+<CurrentSummationDelivered>
+  <DeviceMacId>0x00158d00001ab099</DeviceMacId>
+  <MeterMacId>0xffffffffffffffff</MeterMacId>
+  <TimeStamp>0xffffffff</TimeStamp>
+  <SummationDelivered>0x0000000000072574</SummationDelivered>
+  <SummationReceived>0x0000000000000020</SummationReceived>
+  <Multiplier>0x00000001</Multiplier>
+  <Divisor>0x000003e8</Divisor>
+  <DigitsRight>0x01</DigitsRight>
+  <DigitsLeft>0x00</DigitsLeft>
+  <SuppressLeadingZero>Y</SuppressLeadingZero>
+</CurrentSummationDelivered>
+<TimeCluster>
+  <DeviceMacId>0x00158d00001ab099</DeviceMacId>
+  <MeterMacId>0xffffffffffffffff</MeterMacId>
+  <UTCTime>0x15cddd3b</UTCTime>
+  <LocalTime>0x00000000</LocalTime>
+</TimeCluster>
