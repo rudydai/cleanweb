@@ -13,13 +13,17 @@ def parse_input(filein, fileout):
             print "incorrectly formatted input: "+line
             break
         date = entries[1].strip()
-        date = date[:6]
+        date = date[:5]
+        dates = date.split("/")
+        numdates = [int(part) for part in dates]
+        dates = [str(part) for part in numdates]
+        date = "/".join(dates)
         entries = entries[2:]
         for meas in entries:
             start = str(startime)+":00"
             end = str(startime)+":59"
             measure = float(meas)
-            key = date+start
+            key = date+"/"+start
             measurements[key] = measure
             startime += 1
     writeout.write(json.dumps({"readings": measurements}))
