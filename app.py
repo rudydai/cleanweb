@@ -3,6 +3,8 @@ from flask import Flask, request, render_template
 from parser import csv_read
 from tips import main as tipper
 import os
+import json
+
 app = Flask(__name__)
 
 ALLOWED_EXTENSIONS = ['csv', 'CSV']
@@ -30,14 +32,18 @@ buff = []
 
 @app.route("/ravenfeed", methods=["GET","POST"])
 def process2():
+    global buff
     if request.method == "POST":
+        print "posting data"
         time = request.form["time"]
         demand = float(request.form["demand"])
         buff.append({"kWh":demand, "time":time})
-        if BUFF_SIZE > 25:
+        if len(buff) > BUFF_SIZE:
             buff.pop(0)
+    print list(buff)
     data = {"readings":list(buff)}
-    return render_template("livegraph.html", data=unicode(data))
+    jsdat = json.dumps(data)
+    return render_template("livegraph.html", data=unicode(jsdat), tip=tipper())
 
 
 if __name__ == "__main__":
