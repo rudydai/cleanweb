@@ -3,7 +3,7 @@ import time
 import ravenparser
 import sys
 
-url = "PUT SOMETHING HERE"
+url = "http://136.152.38.12:5000/ravenfeed"
 
 def bundle_into_packet(demand, timestamp):
     params = urllib.urlencode({"demand":demand, "time":timestamp})
