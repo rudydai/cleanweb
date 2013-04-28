@@ -4,7 +4,7 @@ app = Flask(__name__)
 BUFF_SIZE = 120 
 buff = []
 
-@app.route("/ravenfeed", method=["POST"])
+@app.route("/ravenfeed", method=["GET","POST"])
 def process():
     if request.method == "POST":
         time = request.form["time"]
