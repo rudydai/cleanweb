@@ -27,6 +27,7 @@ def parse_input(filein, fileout):
             measurements[key] = measure
             startime += 1
     writeout.write(json.dumps({"readings": measurements}))
+    writeout.close()
 
 if __name__ == "__main__":
     if len(sys.argv) != 3:
