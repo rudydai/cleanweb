@@ -1,0 +1,6 @@
+You can access your PG&E Green Button Data here!  Simply sign in with your My Energy account and click on the Green Button icon for access to your personal energy usage data in CSV format.
+
+
+http://www.pge.com/myhome/myaccount/using/thegreenbutton/
+
+
