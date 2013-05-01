@@ -1,1 +1,1 @@
-web: python wordfinder.py
+web: python app.py
